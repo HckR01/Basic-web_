@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Basic User Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Basic User Form</h2>
+  <form id="userForm">
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
+
+    <label for="dob">Date of Birth:</label><br />
+    <input type="date" id="dob" name="dob" required /><br /><br />
+
+    <label for="age">Age:</label><br />
+    <input type="number" id="age" name="age" min="0" max="150" required /><br /><br />
+
+    <label for="details">Details:</label><br />
+    <textarea id="details" name="details" rows="4" cols="30" placeholder="Enter additional details..."></textarea><br /><br />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
