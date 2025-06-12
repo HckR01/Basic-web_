@@ -1,0 +1,137 @@
+*{
+      box-sizing: border-box;
+      margin:0;
+      padding:0;
+}
+
+body{
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9c6;
+      color: #ffffff;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+main{
+      background: rgb(0,51,102);
+      background: linear-gradient(159deg, rgba(0,51,102,1) 0%, rgba(15,82,186,1) 100%);
+      height: 100vh; /* full height of the screen */
+      width: 100vw;  /* full width of the screen */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+}
+
+.container{
+      border: 1px solid #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      /* height: 50%; in here if we add the height like this then text go out of the box due to fix height sio.. */
+      min-height: 200px; /* minimum height to ensure content fits */  
+      height: auto; /* allow height to adjust based on content */
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header{
+      text-align: center;
+      margin-bottom: 20px;
+      text-decoration: underline;
+      color: #ffffff;
+      animation: glowPulse 2.5s infinite;
+
+      /* Glow effect */
+      /* text-shadow:
+    0 0 50px #ffffff,
+    0 0 10px #ff5e00,
+    0 0 20px #001aff,
+    0 0 40px #00f0ff; 
+       */
+}
+
+.input-area{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+
+}
+
+.input-area input[type="text"]{
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+}
+
+.input-area button{
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #674aca;
+      color: #ffffff;
+      cursor: pointer;
+}
+
+.input-area button:hover{
+      background-color: #ff7300;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* additional styles */
+@keyframes glowPulse {
+  0% {
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 10px #0f9303,
+      0 0 20px #d0ff00c6,
+      0 0 40px #ff7300;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #ffffff,
+      0 0 20px #3700ff,
+      0 0 30px #0d00ff,
+      0 0 60px #8400ff;
+  }
+  100% {
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 10px #00f0ff,
+      0 0 20px #00f0ff,
+      0 0 40px #00f0ff;
+  }
+}
