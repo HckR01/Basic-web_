@@ -83,26 +83,21 @@ main{
 }
 
 .input-area button:hover{
-      background-color: #ff7300;
+      background-color: #f3fcff;
+      color: black;
+      box-shadow: 0 0 10px rgba(51, 51, 51, 0.5);
 }
 
+.input-area button:active{
+      transform: scale(0.95);
+}
 
+.input-area button:focus{
+      outline: none;
+      box-shadow: 0 0 5px rgba(243, 16, 16, 0.5);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* now style the li ul elements */
 
 
 
