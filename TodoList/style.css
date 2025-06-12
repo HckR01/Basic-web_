@@ -8,19 +8,23 @@ body{
       font-family: 'Arial', sans-serif;
       background-color: #f9f9f9c6;
       color: #ffffff;
+      
 }
 html, body {
+      scroll-behavior: smooth;
   min-height: 100%;
   margin: 0;
-  height: auto;
+  height: 100%;
   width: 100%;
 }
 
 main{
       background: rgb(0,51,102);
       background: linear-gradient(159deg, rgba(0,51,102,1) 0%, rgba(15,82,186,1) 100%);
+      min-height: 100vh; /* full height of the screen */
+      height: auto;
        /* full height of the screen just auto now coz whenadd more task its affect*/
-      width: 100vw;  /* full width of the screen */
+      width: auto;  /* full width of the screen */
       display: flex;
       flex-direction: column;
       justify-content: center;
