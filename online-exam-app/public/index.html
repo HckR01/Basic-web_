@@ -11,6 +11,46 @@
       <link rel="stylesheet" href="/online-exam-app/public/css/style.css">
 </head>
 <body>
+      <!-- nav bar -->
+       <nav class="navbar navbar-expand-lg" style="background-color:  #181536; padding: 10px 30px;">
+  <div class="container-fluid d-flex justify-content-between align-items-center w-100">
+
+    <!-- Left: Brand + Links -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand text-white me-4" href="#">Gate Go</a>
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item mx-2">
+          <a class="nav-link text-white" href="#">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link text-white" href="#">Resources</a>
+        </li>
+        <li class="nav-item dropdown mx-2">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="subjectsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Subjects
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="subjectsDropdown">
+            <li><a class="dropdown-item" href="#">DSA</a></li>
+            <li><a class="dropdown-item" href="#">Math</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">General Aptitude</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right: Search -->
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>
+
+
+       <!-- header -->
       <header class="hero">
             <h1>Online Exam portal for GATE</h1>
             <p>Test your knowldge. prepare smart.</p>
@@ -26,6 +66,13 @@
             </div>
       </section>
 
+
+
+
+
+
+
+      <!-- js links -->
       <script src="/online-exam-app/public/js/main.js"></script>
 
       <!-- bootstrap -->

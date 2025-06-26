@@ -5,15 +5,17 @@ body{
   font-style: normal;
       background-color:#f4f4f4 ;
       color: #333;
-      background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+      
 
+}
+nav{
+      background-color: #181536;
 }
 
 .hero{
       height: 100vh;
       
- 
-
+background-color: #181536;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -44,6 +46,14 @@ body{
 }
 
 .subjects{
+      min-height: 400px; /* ✅ Ensures minimum height for image */
+  background: url('/online-exam-app/img/9019796.jpg') no-repeat center center;
+  background-size: cover;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+       
+      
       padding: 40px;
        min-height: 400px; 
        /* ✅ Ensures minimum height for image */
@@ -80,7 +90,7 @@ body{
 }
 
 .subject-Card{
-      background-color: #a4eaf4;
+      background: rgba(255, 255, 255, 0.18);
       padding: 20px;
       border-radius: 20px;
       width: 200px;
@@ -133,7 +143,7 @@ body{
 .subject-Card:hover {
       transform: translateY(-12px) scale(1.06) rotate(-1deg);
       box-shadow: 0 16px 48px rgba(0, 78, 146, 0.22), 0 4px 16px rgba(0,0,0,0.18);
-      background: rgba(79, 172, 254, 0.22);
+      background: rgb(26, 255, 49);
       border-radius: 8px 32px 8px 32px;
 }
 .subject-Card:hover::before {
@@ -142,9 +152,11 @@ body{
 
 .subject-Card:hover{
       transform: translateY(-5px);
-      background-color: #3f878b;
+      
+      background-color: #4747d9;
+
       color: #f4f4f4;
-      /* transition property not needed here, already set above */
+      transition: 0.3s ease-in-out;
 }
 
 
