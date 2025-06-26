@@ -1,0 +1,72 @@
+body{
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color:#f4f4f4 ;
+      color: #333;
+
+}
+
+.hero{
+      height: 100vh;
+      background: linear-gradient(to right,#4facfe, #00f2fe);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+}
+.hero h1{
+      font-size: 3rem;
+      color: white;
+
+}
+
+.hero p{
+      font-size: 1.5rem;
+      color: white;
+}
+
+#startbtn{
+      padding: 10px 20px;
+      border-radius: 8px;
+      background-color: #fff;
+      color: #4facfe;
+      margin-top: 20px;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+}
+
+.subjects{
+      padding: 40px;
+      background: #fff;
+}
+
+.subject-grid{
+      display: flex;
+      flex-wrap:wrap;
+      gap: 20px;
+      margin-top: 20px;
+      justify-content: center;
+
+      
+}
+
+.subject-Card{
+      background-color: #e0f7fa;
+      padding: 20px;
+      border-radius: 20px;
+      width: 200px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+}
+
+.subject-Card:hover{
+      transform: translateY(-5px);
+      background-color: #3f878b;
+      color: #f4f4f4;
+      transition: 0.3s ease-in-out;
+}
+
