@@ -70,3 +70,52 @@ body{
       transition: 0.3s ease-in-out;
 }
 
+
+.subject-Card{
+      background-color: #e0f7fa;
+      padding: 20px;
+      border-radius: 20px;
+      width: 200px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+}
+
+.subject-Card:hover{
+      transform: translateY(-5px);
+      background-color: #3f878b;
+      color: #f4f4f4;
+      /* transition property not needed here, already set above */
+}
+
+
+/* topic css here */
+
+.topics-header{
+      background-color: #00f2fe;
+      padding: 40px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topics-header h1{
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+}
+
+.topics-header p{
+      font-size:1.2rem;
+      margin-bottom: 0px;
+}
+
+.topics-container{
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      
+      gap: 20px;
+      justify-content: center;
+}
