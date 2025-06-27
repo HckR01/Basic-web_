@@ -14,36 +14,71 @@ nav{
 
 .hero{
       height: 100vh;
-      
-background-color: #181536;
+      background-color: #181536;
       color: #fff;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      align-items: center;    
+      padding: 0 40px;
+}
+#herotext{
+      width: 50%;
+      
+      display: flex;
+      justify-content:center;
+      align-items: flex-start;
       flex-direction: column;
+      
 }
 .hero h1{
-      font-size: 3rem;
+      font-size: 4rem;
+      font-weight: 800;
       color: white;
 
 }
 
 .hero p{
       font-size: 1.5rem;
+      font-weight: 700;
       color: white;
 }
 
-
-#startbtn{
-      padding: 10px 20px;
-      border-radius: 8px;
-      background-color: #fff;
-      color: #4facfe;
-      margin-top: 20px;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
+.img{
+  width: 50%;                 
+  display: flex;              
+  justify-content: center;    
+  align-items: center;
 }
+
+.img img{
+      max-width: 100%;
+      height: auto;
+}
+
+/* =========startbtn========== */
+
+         #startbtn {background-image: linear-gradient(to right, #2c3e50 0%, #3498db  51%, #2c3e50  100%)}
+         #startbtn {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #000000;
+            border-radius: 10px;
+            display: block;
+          }
+
+          #startbtn:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+         
+
+/* .............................. */
 
 .subjects{
       min-height: 400px; /* ✅ Ensures minimum height for image */
@@ -69,6 +104,66 @@ background-color: #181536;
 }
 
 /* edit select sub h2 */
+
+/* ========about us ============== */
+
+.about-us {
+  height: 100vh;
+  background-color: #181536;  /* same dark background */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.about-img {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.about-text {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-text button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #4facfe;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+
+
+
+/* ........................................................ */
 .subjects h2{
       text-align: center;
       color: #fff;
@@ -158,6 +253,123 @@ background-color: #181536;
       color: #f4f4f4;
       transition: 0.3s ease-in-out;
 }
+
+/* ==============================footer===================== */
+.footer {
+  background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+  color: white;
+  padding: 40px 60px 20px 60px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.logo-desc img.footer-logo {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.logo-desc h2 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.logo-desc p {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  position: relative;
+  font-weight: 600;
+}
+
+/* Colored underline under headings */
+.footer-section h3::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #4facfe;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+/* Quick Links */
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-links li {
+  margin: 8px 0;
+}
+
+.quick-links a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.quick-links a:hover {
+  color: #4facfe;
+}
+
+/* Contact */
+.contact-us p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icons a img {
+  width: 38px;                  
+  height: 38px;
+  padding: 4px;
+  background-color: transparent;  
+  border-radius: 50%;
+  border: 1px solid #c0c0c0;         
+  transition: all 0.3s ease-in-out;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+  border-color: #4facfe;         /* highlight border on hover */
+  background-color: rgba(79, 172, 254, 0.1);  /* soft glow */
+}
+
+
+
+/* Footer bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* /............................../ */
 
 
 /* topic css here */

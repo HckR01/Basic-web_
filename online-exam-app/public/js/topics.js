@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get("subject");
 
 //here we update the page title
-document.getElementById("subjectTitle").innerText =`subject:${subject}`
+document.getElementById("subjectTitle").innerText =`SUBJECT:${subject}`
 ;
 
 //subject data topic map to caontain the sub topics 
