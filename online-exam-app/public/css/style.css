@@ -8,9 +8,127 @@ body{
       
 
 }
-nav{
-      background-color: #181536;
+/*================================ nav bar============================================== */
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+.navbar {
+  background-color: #181536;
+  color: white;
+  padding: 15px 30px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  
+  gap: 10px;
+}
+
+.nav-logo img {
+  height: 45px;
+  width: 80px;
+}
+
+.nav-logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4facfe;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #4facfe;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #28244d;
+  min-width: 180px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+}
+
+.dropdown-menu li a {
+  color: white;
+  display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #4facfe;
+}
+
+.login:hover {
+  background-color: #4facfe;
+  color: white;
+}
+
+.signup {
+  background-color: #4facfe;
+  color: white;
+}
+
+.signup:hover {
+  background-color: #3a90f5;
+}
+
+/* ...................................................... */
 
 .hero{
       height: 100vh;
@@ -256,6 +374,7 @@ nav{
 
 /* ==============================footer===================== */
 .footer {
+  min-height:55vh;
   background: linear-gradient(to right, #0f0f0f, #1a1a1a);
   color: white;
   padding: 40px 60px 20px 60px;
@@ -275,8 +394,9 @@ nav{
 }
 
 .logo-desc img.footer-logo {
-  width: 50px;
-  margin-bottom: 10px;
+  width: 228px;
+    margin-bottom: -296px;
+    margin-left: -53px;
 }
 
 .logo-desc h2 {

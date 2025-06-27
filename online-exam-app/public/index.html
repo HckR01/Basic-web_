@@ -6,45 +6,39 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+HU:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
       <title>Online Exam portal</title>
       <link rel="stylesheet" href="/online-exam-app/public/css/style.css">
 </head>
 <body>
       <!-- nav bar -->
-       <nav class="navbar navbar-expand-lg" style="background-color:  #181536; padding: 10px 30px;">
-  <div class="container-fluid d-flex justify-content-between align-items-center w-100">
+      <nav class="navbar">
+  <div class="nav-container">
 
-    <!-- Left: Brand + Links -->
-    <div class="d-flex align-items-center">
-      <a class="navbar-brand text-white me-4" href="#">Gate Go</a>
-      <ul class="navbar-nav d-flex flex-row">
-        <li class="nav-item mx-2">
-          <a class="nav-link text-white" href="#">Home</a>
-        </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link text-white" href="#">Resources</a>
-        </li>
-        <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="subjectsDropdown" role="button"
-             data-bs-toggle="dropdown" aria-expanded="false">
-            Subjects
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="subjectsDropdown">
-            <li><a class="dropdown-item" href="#">DSA</a></li>
-            <li><a class="dropdown-item" href="#">Math</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">General Aptitude</a></li>
-          </ul>
-        </li>
-      </ul>
+    <!-- Left: Logo -->
+    <div class="nav-logo">
+      <h1>GAte GO.</h1>
+      
     </div>
 
-    <!-- Right: Search -->
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light" type="submit">Search</button>
-    </form>
+    <!-- Right: Navigation -->
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+
+      <li class="dropdown">
+        <a href="#">Subjects</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Computer Science</a></li>
+          <li><a href="#">Electronics</a></li>
+          <li><a href="#">Mechanical</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">Resources</a></li>
+
+      <li><button class="btn login">Login / SignUp</button></li>
+      
+    </ul>
 
   </div>
 </nav>
@@ -102,7 +96,7 @@
 
     <!-- Left Logo & Text -->
     <div class="footer-section logo-desc">
-      <img src="/online-exam-app/img/logo/2-removebg-preview.png" alt="GAte GO" class="footer-logo">
+      <img src="/online-exam-app/img/logo//2-removebg-preview (Small).png" alt="GAte GO" class="footer-logo">
       <h2><span style="color:#4facfe;">GAte</span> <span style="color:#ff6a00;">GO.</span></h2>
       <p>Bringing India's First Online Exam Portal</p>
     </div>
@@ -148,6 +142,9 @@
 
        <!-- ......... -->
 
+       
+        
+
 
 
      
@@ -161,6 +158,6 @@
       <script src="/online-exam-app/public/js/main.js"></script>
 
       <!-- bootstrap -->
-       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+       
 </body>
 </html>
