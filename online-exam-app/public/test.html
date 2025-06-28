@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Page</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="test-header">
+    <h2 id="topicTitle">Loading topic...</h2>
+    <div id="timer">00:00</div>
+  </header>
+
+  <div class="test-container">
+    <!-- Left side: Question area -->
+    <div class="question-area">
+      <h3 id="questionText">Question text here</h3>
+      <div id="optionsContainer">
+        <!-- Options will go here -->
+      </div>
+      <div class="buttons">
+        <button id="markBtn">Mark for Review</button>
+        <button id="clearBtn">Clear Answer</button>
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Save & Next</button>
+      </div>
+    </div>
+
+    <!-- Right side: Question navigator -->
+    <div class="navigator">
+      <h4>Questions</h4>
+      <div id="questionGrid" class="question-grid">
+        <!-- Number boxes will go here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/test.js"></script>
+</body>
+</html>
