@@ -1,0 +1,170 @@
+/* style.css */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('assets/images/background.jpg'); /* Replace with your background image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  backdrop-filter: brightness(0.7);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2rem;
+}
+
+button {
+  background-color: #ff6b81;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+button:hover {
+  background-color: #ff4757;
+}
+
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  font-size: 1rem;
+  width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  background: transparent;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1); /* optional light background if you like */
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Textarea and paragraph style */
+.card textarea {
+  width: 90%;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 5px;
+  resize: none;
+}
+
+.card p {
+  margin-top: 8px;
+  text-align: center;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Different sizes */
+.card.big {
+  flex: 1 1 300px; /* bigger cards */
+}
+
+.card.small {
+  flex: 1 1 150px; /* smaller cards */
+}
+
+.sorry-container {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.sorry-container h1 {
+  font-size: 2.5rem;
+  color: #ff6b81;
+  margin-bottom: 20px;
+}
+
+.sorry-container .main-message {
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.sorry-image img {
+  width: 80%;
+  max-width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  margin: 20px 0;
+}
+
+.sorry-container .shayari {
+  font-size: 1.1rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-top: 20px;
+}
