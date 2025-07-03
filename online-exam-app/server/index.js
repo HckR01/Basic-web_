@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-const subjectRoutes = require("./routes/subjects");
-const topicRoutes = require("./routes/topics");
-const questionRoutes = require("./routes/questions");
+const subjectRoutes = require("routes/subjects");
+const topicRoutes = require("routes/topics");
+const questionRoutes = require("routes/questions");
 
 const app = express();
 app.use(express.json());
