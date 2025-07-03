@@ -3,6 +3,26 @@ const startAddMovieButton = document.querySelector('header button');
 const cancelAddMovieButton=addMovieModal.querySelector('.btn--passive')
 const confirmAddMoviButton=cancelAddMovieButton.nextElementSibling;
 const  userInputs=addMovieModal.querySelectorAll('input')
+const entryTextSection=document.getElementById('entry-text');
+//movies array 
+const movies=[];
+
+const updateUI=()=>{
+      if(movies.length===0){
+            entryTextSection.style.display='block';
+
+      }else{
+            entryTextSection.style.display='none';
+      }
+
+}
+
+
+
+
+
+
+
 const toggleBackdrop=()=>{
       backdrop.classList.toggle('visible')
       
@@ -16,7 +36,7 @@ const togglevieModal =()=>{
 const backdropClickHandler=()=>{
       togglevieModal();
 }
-
+//cancle button
 const cancleAddMovieHandler=()=>{
       togglevieModal();
 }
@@ -29,8 +49,17 @@ const addMOvieHandler=()=>{
 
       if(titleValue.trim()==='' ||imgUrlValue.trim()===''||ratingValue.trim()===''||+ratingValue<1||
       +ratingValue>5){
-            alert('please enter valid value () rating between 1 - 5')
+            alert('please enter valid value () rating between 1 - 5');
+            return;
       }
+      const newMovie={
+            title:titleValue,
+            image:imgUrlValue,
+            rating:ratingValue
+      };
+      movies.push(newMovie);
+      console.log(movies);
+      togglevieModal();
 }
 
 startAddMovieButton.addEventListener('click',togglevieModal)
