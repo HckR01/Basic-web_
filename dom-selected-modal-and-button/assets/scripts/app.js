@@ -4,8 +4,16 @@ const cancelAddMovieButton=addMovieModal.querySelector('.btn--passive')
 const confirmAddMoviButton=cancelAddMovieButton.nextElementSibling;
 const  userInputs=addMovieModal.querySelectorAll('input')
 const entryTextSection=document.getElementById('entry-text');
-//movies array 
+//movies array and its functions
 const movies=[];
+
+const clearMovieInputs=()=>{
+      for(const userInput of userInputs){
+            userInput.value='';
+      }
+
+}
+
 
 const updateUI=()=>{
       if(movies.length===0){
@@ -15,6 +23,36 @@ const updateUI=()=>{
             entryTextSection.style.display='none';
       }
 
+}
+// ...................................................
+//render movie elements
+const deleteMovieHandler=(movieId)=>{
+      let identifiedIndex=0;
+      for(const movie of movies){
+            if(movie.id===movieId){
+                  break;
+
+            }
+            identifiedIndex++;
+      }
+      movies.splice(identifiedIndex,1);
+      const listRoot=document.getElementById('movie-list');
+      listRoot.children[identifiedIndex].remove();
+      
+}
+const renderNewMOvieElement=(id,title,imgUrl,rating)=>{
+      const newMovieElement =document.createElement('li');
+      newMovieElement.className='movie-element';
+      newMovieElement.innerHTML=`
+            <div class="movie-element__image"><img src="${imgUrl}" alt="${title}"></div>
+            <div class="movie-element__info">
+            <h2>${title}</h2>
+            <p>${rating}/5 stars</p>
+            </div>
+      `;
+      newMovieElement.addEventListener('click',deleteMovieHandler.bind(null,id))
+      const listRoot=document.getElementById('movie-list');
+      Root.appendChild(newMovieElement);
 }
 
 
@@ -53,6 +91,7 @@ const addMOvieHandler=()=>{
             return;
       }
       const newMovie={
+            id: Math.random().toString(),
             title:titleValue,
             image:imgUrlValue,
             rating:ratingValue
@@ -60,6 +99,11 @@ const addMOvieHandler=()=>{
       movies.push(newMovie);
       console.log(movies);
       togglevieModal();
+      clearMovieInputs();
+      renderNewMOvieElement(newMovie.id,newMovie.title,newMovie.image,newMovie.rating);
+      updateUI();
+
+
 }
 
 startAddMovieButton.addEventListener('click',togglevieModal)
