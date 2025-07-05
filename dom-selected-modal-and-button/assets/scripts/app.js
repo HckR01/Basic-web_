@@ -40,6 +40,7 @@ const deleteMovieHandler=(movieId)=>{
       listRoot.children[identifiedIndex].remove();
       
 }
+//add movie function
 const renderNewMOvieElement=(id,title,imgUrl,rating)=>{
       const newMovieElement =document.createElement('li');
       newMovieElement.className='movie-element';
@@ -105,6 +106,11 @@ const addMOvieHandler=()=>{
 
 
 }
+
+
+
+
+//eventslisters 
 
 startAddMovieButton.addEventListener('click',togglevieModal)
 backdrop.addEventListener('click',togglevieModal)
