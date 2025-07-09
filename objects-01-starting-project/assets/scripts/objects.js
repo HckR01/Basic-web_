@@ -1,20 +1,31 @@
-const person ={
-      nmae:'lax',
-      age:30,
-      hobbies:['sports','cooking'],
-      address:{
-            street:'123 main st',
-            city:'Boston',
-            state:'MA'
+const addMovieBtn =document.getElementById("add-movie-btn");
+const searchBtn =document.getElementById("search-btn");
+console.log('hi')
+
+const movies=[];
+//functions......................................................
+const addMovieHandler=()=>{
+      const title=document.getElementById('title').value;
+      const extraName=document.getElementById('extra-name').value;
+      const extraValue=document.getElementById('extra-value').value;
+      if(title.trim()===''||extraName.trim()===''||extraValue.trim()===''){
+            return;
       }
+      const newMovie={
+            info:{
+            title,
+            [extraName]:extraValue
+            },
+            id:Math.random()
+      };
+      movies.push(newMovie);
+      console.log(newMovie);
+
 }
-const person1 ={
-      nmae:'max',
-      age:31,
-      hobbies:['sports','cooking'],
-      address:{
-            street:'123 main st',
-            city:'Boston',
-            state:'MA'
-      }
-}
+//...............................................................
+
+
+
+
+//events listners
+addMovieBtn.addEventListener('click', addMovieHandler);
