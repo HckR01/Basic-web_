@@ -513,15 +513,18 @@ body{
 }
 
 .topics-container {
-  padding: 40px 20px; /* ✅ Updated */
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 600px;
-  background: url('/online-exam-app/img/9019796.jpg') no-repeat center center;
-  background-size: cover;
-  gap: 20px;
-  justify-content: center;
-  position: relative;
+  padding: 40px 20px;
+    display: flex
+;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    background: url(/online-exam-app/img/9019796.jpg) no-repeat center center;
+    background-size: cover;
+    gap: 20px;
+    position: relative;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-around;
 }
 
 .subject-Card {
