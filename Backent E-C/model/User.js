@@ -59,7 +59,16 @@ shippingAddress:{
       country: {
             type:String,
       },
+      phone: {
+            type:String,
+      },
      
-},
-    
-});
+}   
+},{
+      timestamps:true
+}
+);
+
+//compile this schema to model
+const User=mongoose.model("user",UserSchema);
+export default User;//mongoose.model() kya karta hai? ye schema ko model me convert karta hai, jisse tum MongoDB ke data ke saath kaam kar sako (insert, find, delete, etc.).
