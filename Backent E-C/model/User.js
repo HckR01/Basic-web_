@@ -10,7 +10,7 @@ const UserSchema=new Schema({
       },
       email:{
             type:String,
-            required:true
+            required:true,
       },
       password:{
             type:String,
@@ -70,5 +70,5 @@ shippingAddress:{
 );
 
 //compile this schema to model
-const User=mongoose.model("user",UserSchema);
+const User=mongoose.model("User",UserSchema);
 export default User;//mongoose.model() kya karta hai? ye schema ko model me convert karta hai, jisse tum MongoDB ke data ke saath kaam kar sako (insert, find, delete, etc.).
