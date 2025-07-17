@@ -1,0 +1,17 @@
+{
+  "name": "backent-e-c",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoos": "^0.0.1-security",
+    "mongoose": "^8.16.4"
+  }
+}
