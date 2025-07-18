@@ -3,9 +3,11 @@ import mongoose  from "mongoose";
 
 const dbConnect=async()=>{
       try{
-            const connected=mongoose.connect('mongodb+srv://i-autogen:DyEKVLBzIWY5nJzx@nodejs-ecommerce-api.s09uij8.mongodb.net/nodejs-ecommerce-api?retryWrites=true&w=majority&appName=nodejs-ecommerce-api');
+            // console.log("URL =>", process.env.MONGO_URL);//for checking run or not
+
+            const connected=await mongoose.connect( process.env.MONGO_URL);
             mongoose.set('strictQuery',true);
-            console.log(` mongo connected ${(await connected).connection.host}` )
+            console.log(` mongo connected ${( connected).connection.host}` )
 
       }catch(error){
             console.log(`Error:${error.message}`);

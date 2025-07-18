@@ -2,7 +2,7 @@
   "name": "backent-e-c",
   "version": "1.0.0",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "server": "nodemon server.js",
     "start": "node server.js"
@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "mongoos": "^0.0.1-security",
     "mongoose": "^8.16.4"
