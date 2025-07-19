@@ -6,6 +6,8 @@ import express from"express";
 import dbConnect from "../config/dbconnect.js";
 //dbconnect
 dbConnect();
+import userRoutes from '../routes/userRoute.js';
 const app=express();
-
+//routes
+app.use('/,userRoutes')
 export default app;
