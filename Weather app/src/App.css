@@ -40,3 +40,234 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Main App Styling */
+.app-main {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0c0c0c 0%,
+    #1a1a1a 25%,
+    #2d2d2d 50%,
+    #1a1a1a 75%,
+    #0c0c0c 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(102, 126, 234, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(118, 75, 162, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Weather Container */
+.weather-container {
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Heading Card */
+.heading-card {
+  background: linear-gradient(145deg, #1e1e1e, #0a0a0a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+  position: relative;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.heading-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 50%
+  );
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.heading-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 15px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* Input Section */
+.input-section {
+  position: relative;
+}
+
+/* Input Card Styles */
+.input-card {
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  border-radius: 20px;
+  padding: 2px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.input-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(145deg, #667eea, #764ba2, #667eea);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.input-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 15px 30px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(102, 126, 234, 0.3);
+}
+
+.input-card:hover::before {
+  opacity: 1;
+}
+
+.card-content {
+  background: linear-gradient(145deg, #1e1e1e, #0a0a0a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  backdrop-filter: blur(20px);
+}
+
+.card-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 50%
+  );
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.input-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.location-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.location-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.location-input:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  .card-content {
+    background: #ffffff;
+  }
+
+  .input-label {
+    color: #213547;
+  }
+
+  .location-input {
+    background: rgba(0, 0, 0, 0.05);
+    color: #213547;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .location-input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .location-input:focus {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: #667eea;
+  }
+}
