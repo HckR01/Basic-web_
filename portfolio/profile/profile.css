@@ -1,0 +1,88 @@
+/* Custom profile styles to complement Tailwind
+	 Theme: blue & white, professional look
+*/
+
+/* Base typography */
+:root {
+  --brand-blue: #0ea5e9; /* sky-500 */
+  --brand-dark: #0f172a; /* slate-900 */
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* Make sure the header blends well when scrolling */
+header {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+/* Avatar fallback — if you add an <img> inside the avatar div, make it cover */
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+/* Card tweaks */
+.card-soft {
+  background: linear-gradient(180deg, rgba(14, 165, 233, 0.06), transparent);
+  border: 1px solid rgba(14, 165, 233, 0.08);
+}
+
+/* Small screens: show nav when toggled */
+@media (max-width: 767px) {
+  header nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  header nav ul.hidden {
+    display: none;
+  }
+}
+
+/* Utility: subtle focus rings for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid rgba(14, 165, 233, 0.18);
+  outline-offset: 2px;
+}
+
+/* Make headings stand out slightly */
+h1 {
+  letter-spacing: -0.02em;
+}
+
+/* Footer spacing (if added later) */
+footer {
+  padding: 3rem 0;
+  color: #334155;
+}
+
+/* Minor container width tweak to line up with Tailwind's max width */
+.container {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Project card consistent sizing and subtle hover */
+.project-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
+}
+
+/* End of profile.css */
