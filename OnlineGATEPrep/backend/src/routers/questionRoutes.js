@@ -94,4 +94,37 @@ router.post("/addquestion", async (req, res) => {
   }
 });
 
+router.post("/addquestions", async (req, res) => {
+  try {
+    const payload = req.body;
+    if (!Array.isArray(payload) || payload.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Send a non-empty array of questions" });
+    }
+
+    // basic per-item validation (require questionText, questionType, subject)
+    const invalid = payload.find(
+      (q) => !q.questionText || !q.questionType || !q.subject
+    );
+    if (invalid) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "Each question must include questionText, questionType and subject",
+        });
+    }
+
+    // Use insertMany for performance
+    const created = await Question.insertMany(payload, { ordered: true });
+    return res.status(201).json({ inserted: created.length, docs: created });
+  } catch (err) {
+    console.error("Error bulk inserting questions:", err);
+    return res
+      .status(500)
+      .json({ message: "Error inserting questions", error: err.message });
+  }
+});
+
 export default router;
