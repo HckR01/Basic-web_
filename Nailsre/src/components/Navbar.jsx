@@ -38,7 +38,7 @@ const Navbar = () => {
       <ul
         className={`md:flex list-none m-0 p-0 space-x-6 ${
           isOpen
-            ? "flex flex-col absolute top-full left-0 w-full bg-linear-to-r from-pink-50 to-pink-100 shadow-lg p-4 space-y-4 border-t border-pink-200 transition-all duration-300 ease-in-out"
+            ? "flex flex-col absolute top-full left-0 w-full bg-linear-to-r from-pink-50 to-pink-100 shadow-lg p-4 space-y-4 border-t border-pink-200 transition-all duration-300 ease-in-out z-50"
             : "hidden"
         }`}
       >
