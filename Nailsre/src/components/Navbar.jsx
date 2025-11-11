@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center pl-4 pr-8 py-4 bg-linear-to-r from-pink-50 to-pink-100 shadow-lg relative border-b border-pink-200">
+    <nav className="flex justify-between items-center pl-4 pr-8 py-4 bg-linear-to-r from-pink-50 to-pink-100 shadow-lg relative border z-50">
       <span
         className="text-2xl font-bold text-pink-800 pl-4 hover:text-pink-900 transition-colors duration-300"
         style={{ fontFamily: "cursive" }}
