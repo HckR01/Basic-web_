@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Shop = () => {
@@ -54,9 +55,15 @@ const Shop = () => {
           </table>
         </div>
         <div className="text-center mt-8">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             Contact us to book an appointment!
           </p>
+          <Link
+            to="/book-now"
+            className="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 dark:bg-pink-500 dark:hover:bg-pink-600"
+          >
+            📅 Book Now
+          </Link>
         </div>
       </div>
       {/* WhatsApp Floating Button */}

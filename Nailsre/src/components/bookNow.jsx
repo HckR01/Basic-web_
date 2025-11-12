@@ -7,10 +7,23 @@ const BookNow = () => {
     email: "",
     age: "",
     phoneNumber: "+91",
+    service: "",
     hasReferral: false,
     referralName: "",
     referralNumber: "",
   });
+
+  const services = [
+    { name: "Classic Manicure", price: "Rs. 500" },
+    { name: "Gel Manicure", price: "Rs. 800" },
+    { name: "French Manicure", price: "Rs. 700" },
+    { name: "Pedicure", price: "Rs. 600" },
+    { name: "Gel Pedicure", price: "Rs. 900" },
+    { name: "Nail Art", price: "Rs. 300" },
+    { name: "Full Set Extensions", price: "Rs. 1500" },
+    { name: "Nail Polish Application", price: "Rs. 200" },
+    { name: "Nail removal and shaping", price: "Rs. 200" },
+  ];
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -56,6 +69,7 @@ const BookNow = () => {
     message += `📧 *Email:* ${formData.email}\n`;
     message += `📱 *Phone Number:* ${formData.phoneNumber}\n`;
     message += `🎂 *Age:* ${formData.age}\n`;
+    message += `💅 *Service:* ${formData.service}\n`;
 
     if (formData.hasReferral) {
       message += `👥 *Referred by:* ${formData.referralName}\n`;
@@ -149,6 +163,26 @@ const BookNow = () => {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400"
                 placeholder="Enter your age"
               />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-2 dark:text-gray-300">
+                Service *
+              </label>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              >
+                <option value="">Select a service</option>
+                {services.map((service, index) => (
+                  <option key={index} value={service.name}>
+                    {service.name} - {service.price}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
