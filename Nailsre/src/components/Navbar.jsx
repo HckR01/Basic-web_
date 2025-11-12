@@ -39,9 +39,9 @@ const Navbar = () => {
         aria-label="Toggle theme"
       >
         {isDarkMode ? (
-          <span className="text-yellow-500 text-xl">☀️</span>
+          <span className="text-yellow-500 text-xl"></span>
         ) : (
-          <span className="text-gray-800 text-xl">🌙</span>
+          <span className="text-gray-800 text-xl"></span>
         )}
       </button>
 
