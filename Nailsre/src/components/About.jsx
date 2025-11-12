@@ -3,17 +3,17 @@ import cardImage from "../assets/card 2.jpg";
 
 const About = () => {
   return (
-    <div className="bg-pink-50 py-8 px-4 lg:px-8">
+    <div className="bg-pink-50 py-8 px-4 lg:px-8 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <h1
-          className="text-4xl md:text-5xl font-bold text-center text-pink-800 mb-8"
+          className="text-4xl md:text-5xl font-bold text-center text-pink-800 mb-8 dark:text-pink-400"
           style={{ fontFamily: "cursive" }}
         >
           About NailsRe
         </h1>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-10">
           <div className="w-full md:w-1/3">
-            <div className="bg-white p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-white p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 dark:bg-gray-800 dark:shadow-gray-900">
               <img
                 src={cardImage}
                 alt="NailsRe Salon"
@@ -22,10 +22,10 @@ const About = () => {
             </div>
           </div>
           <div className="w-full md:w-2/3">
-            <h2 className="text-2xl md:text-3xl font-semibold text-pink-700 mb-4">
+            <h2 className="text-2xl md:text-3xl font-semibold text-pink-700 mb-4 dark:text-pink-300">
               What We Do
             </h2>
-            <p className="text-gray-700 text-lg leading-relaxed">
+            <p className="text-gray-700 text-lg leading-relaxed dark:text-gray-300">
               At NailsRe, we're passionate about nail art that enhances your
               beauty. Our expert technicians provide premium manicures,
               pedicures, extensions, and custom designs using top-quality

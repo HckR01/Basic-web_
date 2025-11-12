@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import introVideo from "../assets/introvideo.mp4";
 
 const VideoIntro = () => {
@@ -22,9 +23,11 @@ const VideoIntro = () => {
           Welcome to NailsRe
         </h1>
 
-        <button className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-5 rounded-full transition-colors duration-300">
-          Book Now
-        </button>
+        <Link to="/book-now">
+          <button className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-5 rounded-full transition-colors duration-300 dark:bg-pink-500 dark:hover:bg-pink-600">
+            Book Now
+          </button>
+        </Link>
       </div>
     </div>
   );

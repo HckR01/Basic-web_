@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
 import product3 from "../assets/product3.jpg";
@@ -47,10 +48,10 @@ const Product = () => {
   ];
 
   return (
-    <div className="bg-pink-50 py-12 px-4 lg:px-8">
+    <div className="bg-pink-50 py-12 px-4 lg:px-8 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <h1
-          className="text-4xl md:text-5xl font-bold text-center text-pink-800 mb-12"
+          className="text-4xl md:text-5xl font-bold text-center text-pink-800 mb-12 dark:text-pink-400"
           style={{ fontFamily: "cursive" }}
         >
           Our Products
@@ -59,7 +60,7 @@ const Product = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden"
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden dark:bg-gray-800 dark:shadow-gray-900"
             >
               <img
                 src={product.image}
@@ -67,13 +68,13 @@ const Product = () => {
                 className="w-full h-72 object-cover hover:brightness-110 transition-all duration-300"
               />
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2 dark:text-gray-200">
                   {product.name}
                 </h3>
-                <p className="text-pink-600 font-bold text-base">
+                <p className="text-pink-600 font-bold text-base dark:text-pink-400">
                   {product.price}
                 </p>
-                <button className="mt-4 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+                <button className="mt-4 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300 dark:bg-pink-600 dark:hover:bg-pink-700">
                   Buy
                 </button>
               </div>
@@ -81,12 +82,12 @@ const Product = () => {
           ))}
         </div>
         <div className="text-center mt-12">
-          <a
-            href="#shop"
-            className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 inline-block"
+          <Link
+            to="/shop"
+            className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 inline-block dark:bg-pink-700 dark:hover:bg-pink-800"
           >
             Show More
-          </a>
+          </Link>
         </div>
       </div>
     </div>

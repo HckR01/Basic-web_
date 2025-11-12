@@ -108,12 +108,10 @@ router.post("/addquestions", async (req, res) => {
       (q) => !q.questionText || !q.questionType || !q.subject
     );
     if (invalid) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "Each question must include questionText, questionType and subject",
-        });
+      return res.status(400).json({
+        message:
+          "Each question must include questionText, questionType and subject",
+      });
     }
 
     // Use insertMany for performance
