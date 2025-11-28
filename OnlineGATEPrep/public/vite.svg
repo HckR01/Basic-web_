@@ -1,10 +1,1 @@
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="gradGModern" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#007BFF; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#28A745; stop-opacity:1" />
-    </linearGradient>
-  </defs>
-
-  <path d="M 100 20 A 80 80 0 1 0 70 180 L 85 180 A 65 65 0 1 1 100 35 Z M 100 100 L 140 100 L 140 120 L 100 120 L 100 100 Z" fill="url(#gradGModern)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="gradGModern" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" style="stop-color:#007bff;stop-opacity:1"/><stop offset="100%" style="stop-color:#28a745;stop-opacity:1"/></linearGradient></defs><path fill="url(#gradGModern)" d="M 100 20 A 80 80 0 1 0 70 180 L 85 180 A 65 65 0 1 1 100 35 Z M 100 100 L 140 100 L 140 120 L 100 120 L 100 100 Z"/></svg>
