@@ -1,0 +1,115 @@
+.services-header {
+    padding: 40px 0;
+}
+
+.services-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+.services-container {
+    display: grid;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-category h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.service-list {
+    display: grid;
+    gap: 20px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    gap: 20px;
+}
+
+.service-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+}
+
+.service-details {
+    flex: 1;
+}
+
+.service-name-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.service-name-row h3 {
+    font-size: 1.1rem;
+    color: var(--color-dark);
+}
+
+.service-name-row .price {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+.service-details p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.book-btn-small {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid var(--color-dark);
+    color: var(--color-dark);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.book-btn-small:hover {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.custom-request-section {
+    background-color: #FFF5F7;
+    border-radius: var(--radius-lg);
+    padding: 60px 20px;
+    margin-top: 60px;
+}
+
+.custom-request-section h2 {
+    margin-bottom: 1rem;
+}
+
+.custom-request-section p {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .service-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .book-btn-small {
+        width: 100%;
+    }
+}

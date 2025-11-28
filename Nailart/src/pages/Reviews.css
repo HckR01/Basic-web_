@@ -1,0 +1,142 @@
+.reviews-header {
+    padding: 40px 0;
+}
+
+.reviews-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #eee;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+}
+
+.reviewer-info h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+    color: var(--color-dark);
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+}
+
+.review-text {
+    color: var(--color-text);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.add-review-section {
+    background-color: #FAFAFA;
+    border-top: 1px solid #eee;
+}
+
+.review-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.review-form-container h2 {
+    margin-bottom: 10px;
+    color: var(--color-dark);
+}
+
+.review-form-container p {
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+}
+
+.review-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.2);
+}
+
+.rating-input {
+    display: flex;
+    gap: 5px;
+}
+
+.rating-input button {
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.rating-input button:hover {
+    transform: scale(1.2);
+}

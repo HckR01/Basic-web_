@@ -1,0 +1,241 @@
+.hero-section {
+    background: linear-gradient(135deg, #FFF5F7 0%, #FFF 100%);
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--color-dark);
+}
+
+.hero-text .highlight {
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+}
+
+.hero-image img {
+    border-radius: 20px 0 20px 0;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 10;
+    animation: float 3s ease-in-out infinite;
+}
+
+.card-1 {
+    top: 10%;
+    left: 0;
+}
+
+.card-2 {
+    bottom: 15%;
+    right: -20px;
+    animation-delay: 1.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.intro-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.service-img {
+    height: 250px;
+    overflow: hidden;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.05);
+}
+
+.service-info {
+    padding: 25px;
+}
+
+.service-info h3 {
+    margin-bottom: 10px;
+    color: var(--color-dark);
+}
+
+.service-info p {
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-primary);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.link-arrow:hover {
+    gap: 10px;
+}
+
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.quick-link-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 1px solid #eee;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-link-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.quick-link-card.highlight {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+}
+
+.quick-link-card.highlight h3,
+.quick-link-card.highlight p {
+    color: white;
+}
+
+.quick-link-card.highlight .icon {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.quick-link-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.quick-link-card p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+}
+
+.quick-link-card .icon {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 80px;
+    height: 80px;
+    color: rgba(0, 0, 0, 0.03);
+    transform: rotate(-15deg);
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-image img {
+        margin: 0 auto;
+    }
+}
