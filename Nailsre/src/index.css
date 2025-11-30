@@ -1,28 +1,123 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+:root {
+  --color-primary: #E8B4B8;
+  /* Muted Rose */
+  --color-primary-light: #FFE4E8;
+  --color-secondary: #D4AF37;
+  /* Gold */
+  --color-dark: #1A1A1A;
+  /* Dark Charcoal */
+  --color-light: #FFFFFF;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-bg: #FAFAFA;
+
+  --font-main: 'Outfit', sans-serif;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --transition: all 0.3s ease;
 }
 
-/* Light theme styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #fdf4ff; /* pink-50 */
-  color: #1f2937; /* gray-800 */
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Dark theme styles */
-.dark {
-  color-scheme: dark;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.dark body {
-  background-color: #1f2937; /* gray-800 */
-  color: #f9fafb; /* gray-50 */
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 2px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
 }

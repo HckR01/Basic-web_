@@ -1,0 +1,95 @@
+.contact-header {
+    padding: 40px 0;
+}
+
+.contact-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 60px;
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.contact-info-card {
+    padding: 40px;
+    background-color: var(--color-dark);
+    color: white;
+}
+
+.contact-info-card h2 {
+    margin-bottom: 30px;
+    color: var(--color-primary);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.info-item .icon {
+    color: var(--color-primary);
+    margin-top: 3px;
+}
+
+.info-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.info-item p {
+    color: #ccc;
+    margin: 0;
+}
+
+.hours-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hours-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+}
+
+.hours-section ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.hours-section ul li span {
+    color: white;
+    font-weight: 500;
+}
+
+.map-container {
+    min-height: 400px;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .map-container {
+        height: 300px;
+        min-height: auto;
+    }
+}

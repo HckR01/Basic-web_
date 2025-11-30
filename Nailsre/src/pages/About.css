@@ -1,0 +1,135 @@
+.about-header {
+  padding: 40px 0;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-dark);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.about-image {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+}
+
+.about-text p {
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-item h3 {
+  font-size: 1.2rem;
+  margin: 10px 0 5px;
+  color: var(--color-dark);
+}
+
+.stat-item p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.certifications-section {
+  background-color: #fafafa;
+  border-radius: var(--radius-lg);
+  padding: 60px;
+}
+
+.cert-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.cert-item {
+  background: white;
+  padding: 15px 30px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+  color: var(--color-dark);
+  border: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+#image {
+  height: 500px;
+  /* width: auto; */
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+#image:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+#image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#image {
+  box-shadow: var(--shadow-lg);
+}
+
+#image:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+#image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#image {
+  box-shadow: var(--shadow-lg);
+}
