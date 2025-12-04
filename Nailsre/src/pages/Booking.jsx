@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, User, Phone, FileText } from 'lucide-react';
+import { useUser } from '@clerk/clerk-react';
 import './Booking.css';
 
 const Booking = () => {
+    const { isSignedIn } = useUser();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -19,6 +21,12 @@ const Booking = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!isSignedIn) {
+            alert("Please log in to book an appointment.");
+            return;
+        }
+
         setIsSubmitting(true);
 
         // Simulate API call

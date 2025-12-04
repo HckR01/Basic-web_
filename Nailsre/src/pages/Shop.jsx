@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingBag, Star } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useUser } from '@clerk/clerk-react';
 import './Shop.css';
 
 const products = [
@@ -14,6 +15,15 @@ const products = [
 
 const Shop = () => {
     const { addToCart } = useCart();
+    const { isSignedIn } = useUser();
+
+    const handleAddToCart = (product) => {
+        if (!isSignedIn) {
+            alert("Please log in to add items to the cart");
+            return;
+        }
+        addToCart(product);
+    };
 
     return (
         <div className="shop-page page-content">
@@ -39,7 +49,7 @@ const Shop = () => {
                                 <p className="product-price">₹{product.price.toFixed(2)}</p>
                                 <button
                                     className="btn btn-primary btn-sm add-to-cart-btn"
-                                    onClick={() => addToCart(product)}
+                                    onClick={() => handleAddToCart(product)}
                                 >
                                     <ShoppingBag size={16} /> Add to Cart
                                 </button>

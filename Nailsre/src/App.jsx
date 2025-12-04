@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
@@ -90,19 +91,11 @@ function App() {
                   />
                   <Route
                     path="/orders"
-                    element={
-                      <ClerkSignedIn>
-                        <Orders />
-                      </ClerkSignedIn>
-                    }
+                    element={<Orders />}
                   />
                   <Route
                     path="/book"
-                    element={
-                      <ClerkSignedIn>
-                        <Booking />
-                      </ClerkSignedIn>
-                    }
+                    element={<Booking />}
                   />
                   <Route path="/sign-in" element={<ClerkSignIn />} />
                   <Route path="/sign-up" element={<ClerkSignUp />} />

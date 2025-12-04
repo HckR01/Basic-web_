@@ -1,30 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { Package, Truck, CheckCircle, Clock, MapPin } from "lucide-react";
+import { useUser, SignInButton } from "@clerk/clerk-react";
 import "./Orders.css";
 
 // Check if Clerk is available
 const hasClerk = !!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 const Orders = () => {
-  // Get user ID (fallback to 'guest' if Clerk not available)
-  const [userId, setUserId] = useState("guest");
+  if (hasClerk) {
+    return <OrdersWithAuth />;
+  }
+  return <OrdersList userId="guest" />;
+};
 
-  useEffect(() => {
-    if (hasClerk) {
-      const getUserId = async () => {
-        try {
-          const clerkReact = await import("@clerk/clerk-react");
-          const userHook = clerkReact.useUser();
-          setUserId(userHook.user?.id || "guest");
-        } catch {
-          // Clerk not available, keep as guest
-          setUserId("guest");
-        }
-      };
-      getUserId();
-    }
-  }, []);
+const OrdersWithAuth = () => {
+  const { user, isSignedIn } = useUser();
 
+  if (!isSignedIn) {
+    return (
+      <div className="orders-page page-content">
+        <div className="container text-center empty-orders">
+          <Package size={64} color="#ccc" />
+          <h2>Login to show your order</h2>
+          <p>Please sign in to view your order history.</p>
+          <div className="mt-4">
+            <SignInButton mode="modal">
+              <button className="btn btn-primary">Sign In</button>
+            </SignInButton>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <OrdersList userId={user.id} />;
+};
+
+const OrdersList = ({ userId }) => {
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
@@ -61,18 +73,15 @@ const Orders = () => {
   };
 
   const handleTrackOrder = (order) => {
-    const message = `Hi! I'd like to track my order.\n\nOrder ID: ${
-      order.id
-    }\n\nCurrent Status: ${getStatusText(order.status)}\n\nAddress: ${
-      order.address.name
-    }\n${order.address.street}, ${order.address.city}, ${
-      order.address.state
-    }, ${order.address.zip}\n\nItems:\n${order.items
-      .map(
-        (item) =>
-          `- ${item.name} x${item.quantity} (₹${item.price * item.quantity})`
-      )
-      .join("\n")}\n\nTotal: ₹${order.total}`;
+    const message = `Hi! I'd like to track my order.\n\nOrder ID: ${order.id
+      }\n\nCurrent Status: ${getStatusText(order.status)}\n\nAddress: ${order.address.name
+      }\n${order.address.street}, ${order.address.city}, ${order.address.state
+      }, ${order.address.zip}\n\nItems:\n${order.items
+        .map(
+          (item) =>
+            `- ${item.name} x${item.quantity} (₹${item.price * item.quantity})`
+        )
+        .join("\n")}\n\nTotal: ₹${order.total}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/918850614922?text=${encodedMessage}`, "_blank");
   };
