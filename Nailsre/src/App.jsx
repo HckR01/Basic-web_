@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
@@ -89,14 +88,8 @@ function App() {
                       </ClerkSignedIn>
                     }
                   />
-                  <Route
-                    path="/orders"
-                    element={<Orders />}
-                  />
-                  <Route
-                    path="/book"
-                    element={<Booking />}
-                  />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/book" element={<Booking />} />
                   <Route path="/sign-in" element={<ClerkSignIn />} />
                   <Route path="/sign-up" element={<ClerkSignUp />} />
                 </>
@@ -129,3 +122,5 @@ function App() {
 }
 
 export default App;
+
+//done
