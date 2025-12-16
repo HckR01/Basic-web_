@@ -1,34 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Trash2, Plus, Minus, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useUser } from "@clerk/clerk-react";
 import "./Cart.css";
 
 // Check if Clerk is available
 const hasClerk = !!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
-const Cart = () => {
+const CartContent = ({ userId }) => {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } =
     useCart();
-
-  // Get user ID (fallback to 'guest' if Clerk not available)
-  const [userId, setUserId] = useState("guest");
-
-  useEffect(() => {
-    if (hasClerk) {
-      const getUserId = async () => {
-        try {
-          const clerkReact = await import("@clerk/clerk-react");
-          const userHook = clerkReact.useUser();
-          setUserId(userHook.user?.id || "guest");
-        } catch {
-          // Clerk not available, keep as guest
-          setUserId("guest");
-        }
-      };
-      getUserId();
-    }
-  }, []);
 
   const [address, setAddress] = useState({
     name: "",
@@ -77,16 +59,14 @@ const Cart = () => {
     existingOrders.unshift(orderData); // Add to beginning
     localStorage.setItem("nailart_orders", JSON.stringify(existingOrders));
 
-    const message = `Hi! I'd like to track my order.\n\nOrder ID: ${orderId}\n\nAddress: ${
-      address.name
-    }\n${address.street}, ${address.city}, ${address.state}, ${
-      address.zip
-    }\n\nItems:\n${cart
-      .map(
-        (item) =>
-          `- ${item.name} x${item.quantity} (₹${item.price * item.quantity})`
-      )
-      .join("\n")}\n\nTotal: ₹${cartTotal.toFixed(2)}`;
+    const message = `Hi! I'd like to track my order.\n\nOrder ID: ${orderId}\n\nAddress: ${address.name
+      }\n${address.street}, ${address.city}, ${address.state}, ${address.zip
+      }\n\nItems:\n${cart
+        .map(
+          (item) =>
+            `- ${item.name} x${item.quantity} (₹${item.price * item.quantity})`
+        )
+        .join("\n")}\n\nTotal: ₹${cartTotal.toFixed(2)}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/918850614922?text=${encodedMessage}`, "_blank");
     clearCart();
@@ -260,6 +240,19 @@ const Cart = () => {
       </div>
     </div>
   );
+};
+
+const CartWithAuth = () => {
+  const { user, isSignedIn } = useUser();
+  const userId = isSignedIn ? user.id : "guest";
+  return <CartContent userId={userId} />;
+};
+
+const Cart = () => {
+  if (hasClerk) {
+    return <CartWithAuth />;
+  }
+  return <CartContent userId="guest" />;
 };
 
 export default Cart;

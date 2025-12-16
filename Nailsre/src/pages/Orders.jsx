@@ -73,15 +73,24 @@ const OrdersList = ({ userId }) => {
   };
 
   const handleTrackOrder = (order) => {
-    const message = `Hi! I'd like to track my order.\n\nOrder ID: ${order.id
-      }\n\nCurrent Status: ${getStatusText(order.status)}\n\nAddress: ${order.address.name
-      }\n${order.address.street}, ${order.address.city}, ${order.address.state
-      }, ${order.address.zip}\n\nItems:\n${order.items
+    const address = order.address || {};
+    const items = order.items || [];
+
+    const addressString = address.name
+      ? `\nAddress: ${address.name}\n${address.street || ''}, ${address.city || ''}, ${address.state || ''}, ${address.zip || ''}`
+      : '\nAddress details not available';
+
+    const itemsString = items.length > 0
+      ? `\nItems:\n${items
         .map(
           (item) =>
-            `- ${item.name} x${item.quantity} (₹${item.price * item.quantity})`
+            `- ${item.name} x${item.quantity} (₹${(Number(item.price) || 0) * (Number(item.quantity) || 0)})`
         )
-        .join("\n")}\n\nTotal: ₹${order.total}`;
+        .join("\n")}`
+      : '\nNo items details available';
+
+    const message = `Hi! I'd like to track my order.\n\nOrder ID: ${order.id}\n\nCurrent Status: ${getStatusText(order.status)}${addressString}${itemsString}\n\nTotal: ₹${order.total}`;
+
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/918850614922?text=${encodedMessage}`, "_blank");
   };

@@ -80,14 +80,7 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               {PUBLISHABLE_KEY ? (
                 <>
-                  <Route
-                    path="/cart"
-                    element={
-                      <ClerkSignedIn>
-                        <Cart />
-                      </ClerkSignedIn>
-                    }
-                  />
+                  <Route path="/cart" element={<Cart />} />
                   <Route path="/orders" element={<Orders />} />
                   <Route path="/book" element={<Booking />} />
                   <Route path="/sign-in" element={<ClerkSignIn />} />
