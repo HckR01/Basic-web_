@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import topper1 from "../assets/topper1.png";
+import topper2 from "../assets/topper2.png";
+import topper3 from "../assets/topper3.png";
+import topper4 from "../assets/topper4.png";
 
 function Home() {
   return (
@@ -108,6 +112,107 @@ function Home() {
           </div>
         </div>
       </main>
+
+      {/* NEW: Toppers & Mock Test Section */}
+      <section className="bg-gray-800 py-12 border-t border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Toppers Container */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-100 mb-6">Our Toppers</h2>
+              <div className="grid grid-cols-2 gap-6">
+                {/* Topper Card 1 */}
+                <div className="bg-gray-750 border border-gray-600 p-6 rounded-lg shadow-lg hover:shadow-2xl transition hover:bg-gray-700 flex flex-col items-center">
+                  <img
+                    src={topper1}
+                    alt="Rahul K."
+                    className="h-24 w-24 object-cover rounded-md mb-4 border-2 border-blue-500 shadow-sm"
+                  />
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-white mb-1">Rahul K.</h3>
+                    <p className="text-blue-400 font-semibold uppercase tracking-wider text-sm">Rank 1</p>
+                  </div>
+                </div>
+                {/* Topper Card 2 */}
+                <div className="bg-gray-750 border border-gray-600 p-6 rounded-lg shadow-lg hover:shadow-2xl transition hover:bg-gray-700 flex flex-col items-center">
+                  <img
+                    src={topper2}
+                    alt="Aditi S."
+                    className="h-24 w-24 object-cover rounded-md mb-4 border-2 border-green-500 shadow-sm"
+                  />
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-white mb-1">Aditi S.</h3>
+                    <p className="text-blue-400 font-semibold uppercase tracking-wider text-sm">Rank 5</p>
+                  </div>
+                </div>
+                {/* Topper Card 3 */}
+                <div className="bg-gray-750 border border-gray-600 p-6 rounded-lg shadow-lg hover:shadow-2xl transition hover:bg-gray-700 flex flex-col items-center">
+                  <img
+                    src={topper3}
+                    alt="Vikram R."
+                    className="h-24 w-24 object-cover rounded-md mb-4 border-2 border-purple-500 shadow-sm"
+                  />
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-white mb-1">Vikram R.</h3>
+                    <p className="text-blue-400 font-semibold uppercase tracking-wider text-sm">Rank 12</p>
+                  </div>
+                </div>
+                {/* Topper Card 4 */}
+                <div className="bg-gray-750 border border-gray-600 p-6 rounded-lg shadow-lg hover:shadow-2xl transition hover:bg-gray-700 flex flex-col items-center">
+                  <img
+                    src={topper4}
+                    alt="Neha G."
+                    className="h-24 w-24 object-cover rounded-md mb-4 border-2 border-yellow-500 shadow-sm"
+                  />
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-white mb-1">Neha G.</h3>
+                    <p className="text-blue-400 font-semibold uppercase tracking-wider text-sm">Rank 25</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mock Test Card */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-white flex flex-col justify-center shadow-xl transform hover:scale-[1.02] transition duration-300">
+              <h2 className="text-3xl font-bold mb-4">
+                Join Our Next Mock Test
+              </h2>
+              <p className="text-blue-100 mb-8 text-lg">
+                Challenge yourself with our All India Mock Test. Real exam
+                interface and detailed analysis.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <span className="bg-blue-500/30 p-2 rounded text-2xl">
+                    📅
+                  </span>
+                  <div>
+                    <p className="text-sm text-blue-200">Date</p>
+                    <span className="font-semibold text-lg">Feb 25, 2026</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="bg-blue-500/30 p-2 rounded text-2xl">
+                    ⏰
+                  </span>
+                  <div>
+                    <p className="text-sm text-blue-200">Time</p>
+                    <span className="font-semibold text-lg">
+                      10:00 AM - 1:00 PM
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <Link
+                to="/signup"
+                className="block w-full bg-white text-blue-700 font-bold text-center py-3 rounded-lg text-lg hover:bg-gray-100 transition shadow-lg"
+              >
+                Register Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* NEW: About our web - full viewport container with service cards */}
       <section
@@ -260,6 +365,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+
 
       {/* FOOTER */}
       <footer className="bg-gray-900 border-t border-gray-800">

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
+import { mockQuestions } from "../data/mockQuestions";
 
 function QuizPage() {
   const { topicId } = useParams();
@@ -35,15 +36,20 @@ function QuizPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(
-          `http://localhost:3000/api/questions/quiz/${topicId}`
+        // Mock data usage instead of backend fetch
+        // const res = await fetch(`http://localhost:3000/api/questions/quiz/${topicId}`);
+        // if (!res.ok) throw new Error("Backend off");
+        // const data = await res.json();
+
+        console.log("Using mock data for topic:", topicId);
+        await new Promise(r => setTimeout(r, 500)); // Simulate delay
+
+        // Filter mock questions by topic (loose match)
+        const qsArray = mockQuestions.filter(q =>
+          q.subject.toLowerCase().includes(topicId.toLowerCase()) ||
+          topicId.toLowerCase().includes(q.subject.toLowerCase())
         );
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(`Network response was not ok: ${res.status} ${text}`);
-        }
-        const data = await res.json();
-        const qsArray = Array.isArray(data) ? data : [];
+
         setQuestions(qsArray);
         setAnswers(Array(qsArray.length).fill(null));
         setStatuses(Array(qsArray.length).fill("not"));
@@ -278,11 +284,10 @@ function QuizPage() {
                           onClick={() =>
                             selectOption(currentQuestionIndex, opt.id)
                           }
-                          className={`p-3 rounded-md border transition-shadow ${
-                            selected
+                          className={`p-3 rounded-md border transition-shadow ${selected
                               ? "bg-green-600 border-green-500 shadow"
                               : "bg-gray-800 border-gray-700 hover:shadow-sm"
-                          } cursor-pointer`}
+                            } cursor-pointer`}
                         >
                           <div className="flex items-start gap-3">
                             <div className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-700 text-base font-semibold">
