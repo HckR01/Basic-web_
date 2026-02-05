@@ -1,0 +1,122 @@
+/* TopicsPage.css */
+
+/* Keyframes for Main Background Gradient Shift */
+@keyframes bgShift {
+    0% {
+        transform: translate3d(0, 0, 0);
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(-18px, -8px, 0);
+        filter: hue-rotate(12deg);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        filter: hue-rotate(0deg);
+    }
+}
+
+.animate-bg-shift {
+    animation: bgShift 18s ease-in-out infinite;
+}
+
+/* Card Entry Animation - Scroll Reveal */
+.topic-card-container {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.topic-card-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays are applied via JS index or can remain here if we want strictly index-based delay even on scroll, 
+   but usually scroll reveal handles timing naturally by scroll position. 
+   We can keep a small transition-delay if we want grouped items to cascade. */
+.topic-card-container:nth-child(2n) {
+    transition-delay: 0.1s;
+}
+
+.topic-card-container:nth-child(3n) {
+    transition-delay: 0.2s;
+}
+
+/* 3D Tilt and Hover Effects */
+.topic-card {
+    transition: transform 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+}
+
+.topic-card-link:hover .topic-card {
+    transform: translateY(-12px) rotateX(6deg) scale(1.03);
+    box-shadow: 0 40px 90px rgba(2, 6, 23, 0.65);
+}
+
+.topic-card-link:active .topic-card {
+    transform: translateY(-6px) rotateX(3deg) scale(1.015);
+}
+
+/* Inner Element Parallax/Movement on Hover */
+.topic-icon-box {
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.topic-card-link:hover .topic-icon-box {
+    transform: translateZ(20px) scale(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.topic-start-btn {
+    transition: transform 0.3s ease-out, color 0.3s;
+}
+
+.topic-card-link:hover .topic-start-btn {
+    transform: translateX(4px);
+    color: #ffffff;
+}
+
+/* Floating Shapes */
+@keyframes floatShape {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+        opacity: 0.3;
+    }
+}
+
+.floating-shape {
+    animation: floatShape 6s ease-in-out infinite;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-bg-shift,
+    .topic-card-container,
+    .floating-shape {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .topic-card {
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .topic-card-link:hover .topic-card {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}

@@ -1,18 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import topper1 from "../assets/topper1.png";
 import topper2 from "../assets/topper2.png";
 import topper3 from "../assets/topper3.png";
 import topper4 from "../assets/topper4.png";
 
 function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const admin = localStorage.getItem("isAdmin") === "true";
+    const user = localStorage.getItem("userEmail");
+    setIsAdmin(admin);
+    setIsLoggedIn(!!user);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("userEmail");
+    setIsAdmin(false);
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-gray-200">
       {/* NAVBAR (fixed so hero can occupy full viewport) */}
-      <header className="fixed top-0 left-0 w-full bg-gray-900 border-b border-gray-800 z-20">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+      <header className="fixed top-0 left-0 w-full bg-gray-900 border-b border-gray-800 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo + left links */}
-            <div className="flex items-center space-x-6">
+            {/* Logo + Desktop left links */}
+            <div className="flex items-center gap-8">
               <Link to="/" className="flex items-center gap-3">
                 <div className="h-10 w-10 text-white rounded flex items-center justify-center font-bold">
                   <img src="./vite.svg" alt="" />
@@ -22,26 +42,100 @@ function Home() {
                 </span>
               </Link>
               <nav className="hidden md:flex space-x-4">
-                <Link to="/" className="text-gray-300 hover:text-white">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors">
                   Home
                 </Link>
-                <Link to="/about" className="text-gray-300 hover:text-white">
+                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
                   About
                 </Link>
+                {isAdmin && (
+                  <a
+                    href="/supabaseDb/insertData.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-white flex items-center gap-1 transition-colors"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                    Data Tool
+                  </a>
+                )}
               </nav>
             </div>
 
-            {/* Right side: Login / Signup */}
-            <div className="flex items-center space-x-3">
+            {/* Desktop Right side: Login / Signup */}
+            <div className="hidden md:flex items-center space-x-3">
               <Link
                 to="/login"
-                className="text-gray-300 hover:text-white px-3 py-1 rounded"
+                className="text-gray-300 hover:text-white px-3 py-1 rounded transition-colors"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600"
+                className="bg-blue-500 text-white px-4 py-1 rounded-md hover:bg-blue-600 transition-colors"
+              >
+                Sign Up
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-300 hover:text-white focus:outline-none p-2"
+                aria-label="Toggle menu"
+              >
+                <div className="space-y-1.5">
+                  <span className={`block w-6 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                  <span className={`block w-6 h-0.5 bg-current transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                  <span className={`block w-6 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div
+          className={`md:hidden absolute top-16 left-0 w-full bg-gray-900 border-b border-gray-800 shadow-xl transition-all duration-300 ease-in-out origin-top ${isMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+            }`}
+        >
+          <div className="px-4 py-4 space-y-3 flex flex-col">
+            <Link
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md font-medium"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md font-medium"
+            >
+              About
+            </Link>
+            <a
+              href="/supabaseDb/insertData.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md font-medium flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+              Data Tool
+            </a>
+            <div className="border-t border-gray-800 pt-3 flex flex-col gap-2">
+              <Link
+                to="/login"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-center text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-center bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 font-semibold"
               >
                 Sign Up
               </Link>

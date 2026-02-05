@@ -19,8 +19,19 @@ function LoginPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Login attempt:", formData);
-        // Simulate successful login
-        navigate("/profile");
+
+        // Hardcoded admin check
+        if (formData.email === "sarojkumarbaral6338@gmail.com" && formData.password === "Likuna@2003") {
+            localStorage.setItem("isAdmin", "true");
+            localStorage.setItem("userEmail", formData.email);
+            // Force reload to update Navbar state immediately
+            window.location.href = "/";
+        } else {
+            // Basic mock login for others (no admin access)
+            localStorage.setItem("isAdmin", "false");
+            localStorage.setItem("userEmail", formData.email);
+            window.location.href = "/";
+        }
     };
 
     return (

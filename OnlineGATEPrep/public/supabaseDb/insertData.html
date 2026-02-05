@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Data Inserter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200 min-h-screen p-8 font-sans">
+
+    <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
+        <h1 class="text-3xl font-bold mb-6 text-white border-b border-gray-700 pb-4">Supabase JSON Inserter</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-1">Supabase Project URL</label>
+                <input type="text" id="supaUrl" value="https://sowtasdfnqthxcgrazbk.supabase.co"
+                    class="w-full bg-gray-900 border border-gray-600 rounded px-4 py-2 text-white focus:outline-none focus:border-blue-500 connection-input"
+                    placeholder="https://xyz.supabase.co">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-1">Supabase Anon Key</label>
+                <input type="password" id="supaKey"
+                    value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvd3Rhc2RmbnF0aHhjZ3JhemJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAxNzI1NTMsImV4cCI6MjA4NTc0ODU1M30.la-BO5f1JMx3uowAekXHjeYbcht1slWkaoGV0GFZew8"
+                    class="w-full bg-gray-900 border border-gray-600 rounded px-4 py-2 text-white focus:outline-none focus:border-blue-500 connection-input"
+                    placeholder="public-anon-key">
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-400 mb-1">Target Table Name</label>
+            <input type="text" id="tableName" value="questions"
+                class="w-full bg-gray-900 border border-gray-600 rounded px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                placeholder="e.g. questions">
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-400 mb-1">JSON Data (Array or Object)</label>
+            <textarea id="jsonData" rows="12"
+                class="w-full bg-gray-900 border border-gray-600 rounded px-4 py-2 text-mono text-sm focus:outline-none focus:border-blue-500 font-mono"
+                placeholder='[
+  { 
+    "question_text": "Which data structure uses LIFO?", 
+    "question_type": "MCQ",
+    "options": ["Queue", "Stack", "Tree", "Graph"],
+    "correct_answer": "1",
+    "subject": "CS"
+  },
+  { 
+    "question_text": "If x = 2 and y = 3, what is x + y?", 
+    "question_type": "NAT",
+    "options": null, 
+    "correct_answer": "5",
+    "subject": "Math"
+  }
+]'></textarea>
+            <p class="text-xs text-gray-500 mt-1">Paste your JSON here. Must be valid JSON format.</p>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button onclick="insertData()"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition-colors">
+                Insert Data
+            </button>
+            <button onclick="clearLog()"
+                class="bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded transition-colors">
+                Clear Log
+            </button>
+        </div>
+
+        <div id="statusLog"
+            class="mt-8 p-4 bg-black rounded border border-gray-700 font-mono text-xs overflow-auto max-h-60 whitespace-pre-wrap">
+            Waiting for input...</div>
+    </div>
+
+    <script>
+        // Load saved credentials
+        window.addEventListener('load', () => {
+            const savedUrl = localStorage.getItem('supaUrl');
+            const savedKey = localStorage.getItem('supaKey');
+
+            if (savedUrl) document.getElementById('supaUrl').value = savedUrl;
+            if (savedKey) document.getElementById('supaKey').value = savedKey;
+        });
+
+        const log = (msg, type = 'info') => {
+            const el = document.getElementById('statusLog');
+            const color = type === 'error' ? 'text-red-400' : type === 'success' ? 'text-green-400' : 'text-gray-300';
+            const time = new Date().toLocaleTimeString();
+            el.innerHTML = `<span class="${color}">[${time}] ${msg}</span>\n` + el.innerHTML;
+        };
+
+        const clearLog = () => {
+            document.getElementById('statusLog').innerHTML = 'Log cleared.';
+        };
+
+        async function insertData() {
+            const supaUrl = document.getElementById('supaUrl').value.trim();
+            const supaKey = document.getElementById('supaKey').value.trim();
+            const tableName = document.getElementById('tableName').value.trim();
+            const jsonStr = document.getElementById('jsonData').value.trim();
+
+            // Save credentials
+            localStorage.setItem('supaUrl', supaUrl);
+            localStorage.setItem('supaKey', supaKey);
+
+            if (!supaUrl || !supaKey) {
+                log('Error: Missing Supabase URL or Key', 'error');
+                return;
+            }
+            if (!tableName) {
+                log('Error: Missing Table Name', 'error');
+                return;
+            }
+            if (!jsonStr) {
+                log('Error: No JSON data provided', 'error');
+                return;
+            }
+
+            let dataToInsert;
+            try {
+                dataToInsert = JSON.parse(jsonStr);
+            } catch (e) {
+                log('Error: Invalid JSON format. ' + e.message, 'error');
+                return;
+            }
+
+            // Ensure it's an array if it's a single object, Supabase loves arrays or single objects, but let's be consistent
+            if (!Array.isArray(dataToInsert)) {
+                dataToInsert = [dataToInsert];
+            }
+
+            log(`Connecting to Supabase at ${supaUrl}...`);
+
+            try {
+                const { createClient } = supabase;
+                const client = createClient(supaUrl, supaKey);
+
+                log(`Inserting ${dataToInsert.length} record(s) into '${tableName}'...`);
+
+                const { data, error } = await client
+                    .from(tableName)
+                    .insert(dataToInsert)
+                    .select();
+
+                if (error) {
+                    log('Supabase Error: ' + JSON.stringify(error, null, 2), 'error');
+                    console.error(error);
+                } else {
+                    log(`Success! Inserted ${data.length} rows.`, 'success');
+                    console.log('Inserted data:', data);
+                }
+
+            } catch (err) {
+                log('Unexpected Error: ' + err.message, 'error');
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+
+</html>

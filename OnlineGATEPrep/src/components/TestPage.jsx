@@ -20,10 +20,13 @@ function TestPage() {
   const [durationMinutes, setDurationMinutes] = useState(15);
   const [allowReview, setAllowReview] = useState(true);
   const [allowRecheck, setAllowRecheck] = useState(true);
-  const [questionCount, setQuestionCount] = useState(10);
+  const [questionCount, setQuestionCount] = useState(15);
+  const [questionType, setQuestionType] = useState("All");
 
   // statuses for preview chips: "not", "attempted", "review"
-  const initialStatuses = Array.from({ length: questionCount }, () => "not");
+  // For 'All', we can just show a placeholder max or just 10 in preview
+  const previewCount = questionCount === "All" ? 30 : questionCount;
+  const initialStatuses = Array.from({ length: previewCount }, () => "not");
   const [statuses, setStatuses] = useState(initialStatuses);
 
   // timer preview
@@ -32,7 +35,8 @@ function TestPage() {
   const previewInterval = useRef(null);
 
   useEffect(() => {
-    setStatuses(Array.from({ length: questionCount }, () => "not"));
+    const c = questionCount === "All" ? 30 : questionCount;
+    setStatuses(Array.from({ length: c }, () => "not"));
   }, [questionCount]);
 
   useEffect(() => {
@@ -73,10 +77,15 @@ function TestPage() {
     });
   };
 
-  const markAllNotAttempted = () =>
-    setStatuses(Array.from({ length: questionCount }, () => "not"));
-  const markAllAttempted = () =>
-    setStatuses(Array.from({ length: questionCount }, () => "attempted"));
+  const markAllNotAttempted = () => {
+    const c = questionCount === "All" ? 30 : questionCount;
+    setStatuses(Array.from({ length: c }, () => "not"));
+  };
+
+  const markAllAttempted = () => {
+    const c = questionCount === "All" ? 30 : questionCount;
+    setStatuses(Array.from({ length: c }, () => "attempted"));
+  };
 
   const summary = statuses.reduce(
     (acc, s) => {
@@ -94,7 +103,8 @@ function TestPage() {
       time: String(durationMinutes * 60),
       allowReview: allowReview ? "1" : "0",
       allowRecheck: allowRecheck ? "1" : "0",
-      q: String(questionCount),
+      q: String(questionCount), // "All" or number
+      type: questionType
     });
     navigate(`/quiz/${topicId}?${params.toString()}`);
   };
@@ -118,18 +128,50 @@ function TestPage() {
               <label className="block text-sm text-gray-200 mb-2">
                 Duration
               </label>
-              <div className="flex gap-2 mb-3">
+              <div className="flex flex-wrap gap-2 mb-4">
                 <select
                   value={durationMinutes}
                   onChange={(e) => setDurationMinutes(Number(e.target.value))}
-                  className="bg-gray-800 border border-gray-700 px-3 py-2 rounded w-32"
+                  className="bg-gray-800 border border-gray-700 px-3 py-2 rounded w-full sm:w-auto"
                 >
-                  <option value={10}>10 min</option>
                   <option value={15}>15 min</option>
-                  <option value={20}>20 min</option>
                   <option value={30}>30 min</option>
+                  <option value={60}>60 min</option>
                 </select>
+              </div>
 
+              <label className="block text-sm text-gray-200 mb-2">
+                Number of Questions
+              </label>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <select
+                  value={questionCount}
+                  onChange={(e) => setQuestionCount(e.target.value === "All" ? "All" : Number(e.target.value))}
+                  className="bg-gray-800 border border-gray-700 px-3 py-2 rounded w-full sm:w-auto"
+                >
+                  <option value={15}>15</option>
+                  <option value={30}>30</option>
+                  <option value={40}>40</option>
+                  <option value="All">All Questions</option>
+                </select>
+              </div>
+
+              <label className="block text-sm text-gray-200 mb-2">
+                Question Type
+              </label>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <select
+                  value={questionType}
+                  onChange={(e) => setQuestionType(e.target.value)}
+                  className="bg-gray-800 border border-gray-700 px-3 py-2 rounded w-full sm:w-auto"
+                >
+                  <option value="All">All Types</option>
+                  <option value="MCQ">MCQ Only</option>
+                  <option value="NAT">NAT Only</option>
+                </select>
+              </div>
+
+              <div className="flex gap-4 mt-2">
                 <label className="flex items-center gap-2 text-sm">
                   <input
                     type="checkbox"
@@ -147,18 +189,6 @@ function TestPage() {
                   Allow Recheck
                 </label>
               </div>
-
-              <label className="block text-sm text-gray-200 mb-2">
-                Number of Questions
-              </label>
-              <input
-                type="number"
-                min={1}
-                max={100}
-                value={questionCount}
-                onChange={(e) => setQuestionCount(Number(e.target.value || 1))}
-                className="bg-gray-800 border border-gray-700 px-3 py-2 rounded w-28"
-              />
             </div>
 
             <div className="bg-white/5 p-4 rounded-lg">
@@ -259,8 +289,8 @@ function TestPage() {
                   s === "not"
                     ? `${base} bg-gray-700 text-gray-200`
                     : s === "attempted"
-                    ? `${base} bg-green-600 text-white`
-                    : `${base} bg-yellow-500 text-black`;
+                      ? `${base} bg-green-600 text-white`
+                      : `${base} bg-yellow-500 text-black`;
                 return (
                   <div
                     key={idx}
